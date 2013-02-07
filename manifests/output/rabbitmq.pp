@@ -42,7 +42,7 @@
 #
 # [*exchange_durable*]
 #   Is the exchange durable
-#   Value can be any of: "1", "0"   
+#   Value can be any of: "1", "0"
 #   This variable is optional
 #
 # [*exchange_type*]
@@ -89,7 +89,7 @@ define beaver::output::rabbitmq(
 
   if $host {
     validate_string($host)
-    $opt_host = "  rabbitmq_host:${password}\n"
+    $opt_host = "  rabbitmq_host:${host}\n"
   }
 
   if $vhost {
@@ -139,7 +139,7 @@ define beaver::output::rabbitmq(
 
   file_fragment{"output_rabbitmq_${::fqdn}":
     tag     => "beaver_config_${::fqdn}",
-    content => "${opt_host}${opt_port}${opt_vhost}${opt_username}${opt_password}${opt_queue}${opt_exchange}${opt_exchange_type}${opt_exchange_durable}${opt_key}\n"
+    content => "${opt_host}${opt_port}${opt_vhost}${opt_username}${opt_password}${opt_queue}${opt_exchange}${opt_exchange_type}${opt_exchange_durable}${opt_key}\n",
     order   => 20
   }
 
