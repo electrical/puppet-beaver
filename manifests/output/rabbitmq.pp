@@ -83,55 +83,55 @@ define beaver::output::rabbitmq(
     if ! is_numeric($port) {
       fail("\"${port}\" is not a valid port parameter value")
     } else {
-      $opt_port = "  rabbitmq_port: ${port}\n"
+      $opt_port = "rabbitmq_port: ${port}\n"
     }
   }
 
   if $host {
     validate_string($host)
-    $opt_host = "  rabbitmq_host:${host}\n"
+    $opt_host = "rabbitmq_host:${host}\n"
   }
 
   if $vhost {
     validate_string($vhost)
-    $opt_vhost = "  rabbitmq_vhost: ${vhost}\n"
+    $opt_vhost = "rabbitmq_vhost: ${vhost}\n"
   }
 
   if $username {
     validate_string($username)
-    $opt_username = "  rabbitmq_username: ${username}\n"
+    $opt_username = "rabbitmq_username: ${username}\n"
   }
 
   if $password {
     validate_string($password)
-    $opt_password = "  rabbitmq_password: ${password}\n"
+    $opt_password = "rabbitmq_password: ${password}\n"
   }
 
   if $queue {
     validate_string($queue)
-    $opt_queue = "  rabbitmq_queue: ${queue}\n"
+    $opt_queue = "rabbitmq_queue: ${queue}\n"
   }
 
   if $exchange {
     validate_string($exchange)
-    $opt_exchange = "  rabbitmq_exchange: ${exchange}\n"
+    $opt_exchange = "rabbitmq_exchange: ${exchange}\n"
   }
 
   if $exchange_type {
     validate_string($exchange_type)
-    $opt_exchange_type = "  rabbitmq_exchange_type: ${exchange_type}\n"
+    $opt_exchange_type = "rabbitmq_exchange_type: ${exchange_type}\n"
   }
 
   if $key {
     validate_string($key)
-    $opt_key = "  rabbitmq_key: ${key}\n"
+    $opt_key = "rabbitmq_key: ${key}\n"
   }
 
   if $exchange_durable {
     if ! ($exchange_durable in ['1', '0']) {
       fail("\"${exchange_durable}\" is not a valid exchange_durable parameter value")
     } else {
-      $opt_exchange_durable = "  rabbitmq_exchange_durable => ${exchange_durable}\n"
+      $opt_exchange_durable = "rabbitmq_exchange_durable => ${exchange_durable}\n"
     }
   }
 
