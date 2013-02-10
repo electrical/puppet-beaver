@@ -41,16 +41,14 @@
 # * Richard Pijnenburg <mailto:richard@ispavailability.com>
 #
 define beaver::output::zeromq(
-  $host = ''
+  $host = '',
   $port = 2120,
   $type = 'bind'
 ) {
 
   #### Validate parameters
-  if $port {
-    if ! is_numeric($port) {
-      fail("\"${port}\" is not a valid port parameter value")
-    }
+  if ! is_numeric($port) {
+    fail("\"${port}\" is not a valid port parameter value")
   }
 
   if $host {
@@ -58,12 +56,21 @@ define beaver::output::zeromq(
   }
 
   case $type {
-    'bind': { $opt_url = "  zeromq_address: tcp://*:${port}\n" }
-    'connect': { $opt_url = "  zeromq_address: tcp://${host}:${port}\n" }
-    default: { fail("\"${type}\" is not a valid type parameter value")
+    'bind': {
+        $opt_url = "zeromq_address: tcp://*:${port}\n"
+    }
+    'connect': {
+      if ! $host {
+        fail('\'host\' variable is required when using the connect type')
+      }
+      $opt_url = "zeromq_address: tcp://${host}:${port}\n"
+    }
+    default: {
+      fail("\"${type}\" is not a valid type parameter value")
+    }
   }
 
-  $opt_type = "  zeromq_bind: $type\n"
+  $opt_type = "zeromq_bind: $type\n"
 
   #### Create file fragment
 

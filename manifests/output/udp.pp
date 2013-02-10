@@ -33,14 +33,14 @@ define beaver::output::udp(
   #### Validate parameters
   if $host {
     validate_string($host)
-    $opt_host = "  udp_host: ${host}\n"
+    $opt_host = "udp_host: ${host}\n"
   }
 
   if $port {
     if ! is_numeric($port) {
       fail("\"${port}\" is not a valid port parameter value")
     } else {
-      $opt_port = "  udp_port: ${port}\n"
+      $opt_port = "udp_port: ${port}\n"
     }
   }
 
