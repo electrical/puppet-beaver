@@ -1,0 +1,7 @@
+0.0.2 ( Feb 10 2013 )
+  Fixes for the rabbitmq output define ( PR #1 and #2 by Tavis Aitken )
+  Fixes for other outputs as well
+  Code fix to zeromq output and add extra input validation
+
+0.0.1 ( Jan 15 2013 )
+  First release of the beaver puppet module
