@@ -44,7 +44,7 @@ class beaver::params {
 
   # packages
   case $::operatingsystem {
-    'CentOS', 'Fedora', 'Scientific': {
+    'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon': {
       # main application
       $package = [ 'beaver' ]
       $dep_packages = ['python-devel']
@@ -61,7 +61,7 @@ class beaver::params {
 
   # service parameters
   case $::operatingsystem {
-    'CentOS', 'Fedora', 'Scientific': {
+    'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon': {
       $service_name       = 'beaver'
       $service_hasrestart = true
       $service_hasstatus  = true
