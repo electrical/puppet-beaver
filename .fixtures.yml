@@ -1,0 +1,6 @@
+fixtures:
+  repositories:
+    stdlib: git://github.com/puppetlabs/puppetlabs-stdlib.git
+    file_concat: git://github.com/electrical/puppet-lib-file_concat.git
+  symlinks:
+    beaver: "#{source_dir}"
