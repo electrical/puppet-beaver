@@ -2,7 +2,9 @@
 
 A puppet module for managing and configuring Beaver
 
-This module is puppet 3 tested
+https://github.com/josegonzalez/beaver
+
+[![Build Status](https://travis-ci.org/electrical/puppet-beaver.png?branch=master)](https://travis-ci.org/electrical/puppet-beaver)
 
 ## Usage
 
