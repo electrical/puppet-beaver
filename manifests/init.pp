@@ -133,7 +133,7 @@ class beaver(
     fail("\"${status}\" is not a valid status parameter value")
   }
 
-  if ! ($format in ['repack', 'json', 'string' ]) {
+  if ! ($format in [ 'json', 'msgpack', 'string', 'raw' ]) {
     fail("\"${format}\" is not a valid format parameter value")
   }
 
