@@ -45,13 +45,13 @@ define beaver::input::file(
   #### Validate parameters
   if $tags {
     validate_array($tags)
-    $arr_tags = join($tags, '\', \'')
-    $opt_tags = "tags: '${arr_tags}'\n"
+    $arr_tags = join($tags, ',')
+    $opt_tags = "tags: ${arr_tags}\n"
   }
 
   if $type {
     validate_string($type)
-    $opt_type = "type: '${type}'\n"
+    $opt_type = "type: ${type}\n"
   }
 
   if $add_fields {
