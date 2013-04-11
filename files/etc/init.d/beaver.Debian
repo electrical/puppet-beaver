@@ -13,7 +13,7 @@
 BEAVER_NAME='beaver'
 BEAVER_CMD='beaver -c /etc/beaver/beaver.conf'
 BEAVER_PID='/var/run/logstash_beaver.pid'
-BEAVER_USER='beaver'
+BEAVER_USER='root'
 BEAVER_LOG='/var/log/logstash_beaver.log'
 
 
