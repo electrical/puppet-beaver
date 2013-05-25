@@ -12,6 +12,7 @@
 # [*port*]
 #   The port to connect to
 #   Value type is number
+#   Default value: 9999
 #   This variable is mandatory
 #
 # === Examples
@@ -31,12 +32,12 @@ define beaver::output::udp(
 ) {
 
   #### Validate parameters
-  if $host {
+  if ($host != '') {
     validate_string($host)
     $opt_host = "udp_host: ${host}\n"
   }
 
-  if $port {
+  if ($port != '') {
     if ! is_numeric($port) {
       fail("\"${port}\" is not a valid port parameter value")
     } else {

@@ -61,7 +61,7 @@ define beaver::output::redis(
 
   $opt_url = "redis_url: redis://${host}:${port}/${db}\n"
 
-  if $namespace {
+  if ($namespace != '') {
     validate_string($namespace)
     $opt_namespace = "redis_namespace: ${$namespace}\n"
   }

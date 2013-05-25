@@ -147,13 +147,16 @@ class beaver(
 
   validate_string($hostname)
 
-  if ! ($transport in [ 'redis', 'rabbitmq', 'zeromq', 'udp' ]) {
+  if ! ($transport in [ 'redis', 'rabbitmq', 'zmq', 'udp', 'mqtt', 'sqs' ]) {
     fail("\"${transport}\" is not a valid transport parameter value")
   }
 
   $config = "hostname: ${hostname}\nformat: ${format}\nrespawn_delay: ${respawn_delay}\nmax_failure: ${max_failure}\ntransport: ${transport}"
 
   #### Manage actions
+
+  anchor {'beaver::begin': }
+  anchor {'beaver::end': }
 
   # package(s)
   class { 'beaver::package': }
@@ -165,21 +168,27 @@ class beaver(
   class { 'beaver::service': }
 
 
-
   #### Manage relationships
 
   if $ensure == 'present' {
     # we need the software before configuring it
-    Class['beaver::package'] -> Class['beaver::config']
+    Anchor['beaver::begin']
+    -> Class['beaver::package']
+    -> Class['beaver::config']
 
     # we need the software and a working configuration before running a service
     Class['beaver::package'] -> Class['beaver::service']
     Class['beaver::config']  -> Class['beaver::service']
 
+    Class['beaver::service']
+    -> Anchor['beaver::end']
   } else {
 
     # make sure all services are getting stopped before software removal
-    Class['beaver::service'] -> Class['beaver::package']
+    Anchor['beaver::begin']
+    -> Class['beaver::service']
+    -> Class['beaver::package']
+    -> Anchor['beaver::end']
   }
 
 }

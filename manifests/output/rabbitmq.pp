@@ -18,41 +18,49 @@
 # [*vhost*]
 #   Vhost in rabbitmq
 #   Value type is string
+#   Default value: /
 #   This variable is optional
 #
 # [*username*]
 #   Username for authentication
 #   Value type is string
+#   Default value: guest
 #   This variable is optional
 #
 # [*password*]
 #   Password for authentication
 #   Value type is string
+#   Default value: guest
 #   This variable is optional
 #
 # [*queue*]
 #   Queue name
 #   Value type is string
+#   Default value: logstash-queue
 #   This variable is optional
 #
 # [*exchange*]
 #   Exchange name
 #   Value type is string
+#   Default value: logstash-exchange
 #   This variable is optional
 #
 # [*exchange_durable*]
 #   Is the exchange durable
 #   Value can be any of: "1", "0"
+#   Default value: 0
 #   This variable is optional
 #
 # [*exchange_type*]
 #   Exchange type
 #   Value type is string
+#   Default value: direct
 #   This variable is optional
 #
 # [*key*]
 #   The name of a rabbitmq key
 #   Value type is string
+#   Default value: logstash-key
 #   This variable is optional
 #
 # === Examples
@@ -79,7 +87,7 @@ define beaver::output::rabbitmq(
 ) {
 
   #### Validate parameters
-  if $port {
+  if ($port != '') {
     if ! is_numeric($port) {
       fail("\"${port}\" is not a valid port parameter value")
     } else {
@@ -87,51 +95,51 @@ define beaver::output::rabbitmq(
     }
   }
 
-  if $host {
+  if ($host != '') {
     validate_string($host)
-    $opt_host = "rabbitmq_host:${host}\n"
+    $opt_host = "rabbitmq_host: ${host}\n"
   }
 
-  if $vhost {
+  if ($vhost != '') {
     validate_string($vhost)
     $opt_vhost = "rabbitmq_vhost: ${vhost}\n"
   }
 
-  if $username {
+  if ($username != '') {
     validate_string($username)
     $opt_username = "rabbitmq_username: ${username}\n"
   }
 
-  if $password {
+  if ($password != '') {
     validate_string($password)
     $opt_password = "rabbitmq_password: ${password}\n"
   }
 
-  if $queue {
+  if ($queue != '') {
     validate_string($queue)
     $opt_queue = "rabbitmq_queue: ${queue}\n"
   }
 
-  if $exchange {
+  if ($exchange != '') {
     validate_string($exchange)
     $opt_exchange = "rabbitmq_exchange: ${exchange}\n"
   }
 
-  if $exchange_type {
+  if ($exchange_type != '') {
     validate_string($exchange_type)
     $opt_exchange_type = "rabbitmq_exchange_type: ${exchange_type}\n"
   }
 
-  if $key {
+  if ($key != '') {
     validate_string($key)
     $opt_key = "rabbitmq_key: ${key}\n"
   }
 
-  if $exchange_durable {
+  if ($exchange_durable != '') {
     if ! ($exchange_durable in ['1', '0']) {
       fail("\"${exchange_durable}\" is not a valid exchange_durable parameter value")
     } else {
-      $opt_exchange_durable = "rabbitmq_exchange_durable => ${exchange_durable}\n"
+      $opt_exchange_durable = "rabbitmq_exchange_durable: ${exchange_durable}\n"
     }
   }
 
