@@ -51,7 +51,7 @@ define beaver::input::file(
   $format                 = '',
   $exclude                = '',
   $sincedb_write_interval = '',
-  $stat_interval          = '',
+  $stat_interval          = ''
 ) {
 
   #### Validate parameters
