@@ -49,7 +49,7 @@ define beaver::output::mosquitto(
   $port      = '',
   $clientid  = '',
   $keepalive = '',
-  $topic     = '',
+  $topic     = ''
 ) {
 
   #### Validate parameters

@@ -43,7 +43,7 @@ define beaver::output::redis(
   $host,
   $port      = 6379,
   $db        = 0,
-  $namespace = 'logstash:beaver',
+  $namespace = 'logstash:beaver'
 ) {
 
   #### Validate parameters

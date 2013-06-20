@@ -100,8 +100,8 @@ define beaver::input::file(
 
   #### Write config file
 
-  file_fragment{"input_file_${name}_{$::fqdn}":
-    tag     => "beaver_config_$::fqdn",
+  file_fragment{"input_file_${name}_${::fqdn}":
+    tag     => "beaver_config_${::fqdn}",
     content => "[${file}]\n${opt_tags}${opt_type}${opt_add_fields}${opt_format}${opt_sincedb_write_interval}${opt_stat_interval}\n",
     order   => 30
   }

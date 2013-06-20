@@ -83,7 +83,7 @@ define beaver::output::rabbitmq(
   $exchange         = '',
   $exchange_durable = '',
   $exchange_type    = '',
-  $key              = '',
+  $key              = ''
 ) {
 
   #### Validate parameters

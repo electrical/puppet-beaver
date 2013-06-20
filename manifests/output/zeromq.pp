@@ -61,6 +61,7 @@ define beaver::output::zeromq(
       $opt_hwm = "zeromq_hwm: ${hwm}\n"
     }
   }
+
   if ! is_numeric($port) {
     fail("\"${port}\" is not a valid port parameter value")
   }
@@ -84,7 +85,7 @@ define beaver::output::zeromq(
     }
   }
 
-  $opt_type = "zeromq_bind: $type\n"
+  $opt_type = "zeromq_bind: ${type}\n"
 
   #### Create file fragment
 
