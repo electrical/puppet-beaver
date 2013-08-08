@@ -47,12 +47,10 @@ class beaver::params {
     'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon': {
       # main application
       $package = [ 'beaver' ]
-      $dep_packages = ['python-devel']
     }
     'Debian', 'Ubuntu': {
       # main application
       $package = [ 'beaver' ]
-      $dep_packages = ['python-dev', 'python-pip']
     }
     default: {
       fail("\"${module_name}\" provides no package default value

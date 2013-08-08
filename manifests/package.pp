@@ -26,6 +26,8 @@ class beaver::package {
 
   #### Package management
 
+  include python
+
   # set params: in operation
   if $beaver::ensure == 'present' {
 
@@ -47,10 +49,6 @@ class beaver::package {
   # set params: removal
   } else {
     $package_ensure = 'purged'
-  }
-
-  package { $beaver::params::dep_packages:
-    ensure => $package_ensure;
   }
 
   # action
