@@ -55,7 +55,6 @@ class beaver::package {
   package { $beaver::params::package:
     ensure   => $package_ensure,
     provider => 'pip',
-    require  => Package[$beaver::params::dep_packages]
   }
 
 }
