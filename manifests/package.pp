@@ -26,6 +26,8 @@ class beaver::package {
 
   #### Package management
 
+  include python
+
   # set params: in operation
   if $beaver::ensure == 'present' {
 
@@ -49,15 +51,11 @@ class beaver::package {
     $package_ensure = 'purged'
   }
 
-  package { $beaver::params::dep_packages:
-    ensure => $package_ensure;
-  }
-
   # action
   package { $beaver::params::package:
     ensure   => $package_ensure,
     provider => 'pip',
-    require  => Package[$beaver::params::dep_packages]
+    require  => Class['python'],
   }
 
 }
